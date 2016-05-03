@@ -4,7 +4,7 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'GitHubClient' do
-pod 'AFNetworking'
+    pod 'AFNetworking'
 end
 
 target 'GitHubClientTests' do
