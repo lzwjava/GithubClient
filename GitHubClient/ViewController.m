@@ -8,11 +8,13 @@
 
 #import "ViewController.h"
 #import <AFNetworking/AFNetworking.h>
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *loginLabel;
 @property (strong, nonatomic) NSString *etag;
+@property (weak, nonatomic) IBOutlet UITableViewCell *imageCell;
 
 @end
 
@@ -69,6 +71,14 @@
     if (indexPath.row == 2) {
         [self fetchUserInfo];
     }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+    if (indexPath.row == 3) {
+        [cell.imageView sd_setImageWithURL:[NSURL URLWithString:@"https://avatars2.githubusercontent.com/u/5022872?v=3&s=460"] placeholderImage:[UIImage imageNamed:@"defaultImage"]];
+    }
+    return cell;
 }
 
 - (void)didReceiveMemoryWarning {
